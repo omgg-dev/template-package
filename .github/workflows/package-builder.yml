@@ -1,0 +1,13 @@
+name: Check if the OMGG Package build correctly
+
+# OMGG Github Action for our package project.
+# It's a workflow that check the Unity license validity, run the tests, and build the project.
+# The result of the build can be found in the artifacts of the workflow.
+
+on:
+  # Trigger the workflow on push to main or experimental branches, or manually via workflow_dispatch
+  push:
+    branches:
+      - main
+      - experimental/*
+  workflow_dispatch:
