@@ -51,7 +51,6 @@ if (Test-Path $AsmdefFile) {
 }
 
 # 5. Renaming $OldName to $NewName variables in .github/workflows
-
 $WorkflowsDir = "$RootDir\.github\workflows"
 
 if (Test-Path $WorkflowsDir) {
@@ -65,5 +64,13 @@ $RenameFile = "$RootDir\rename.ps1"
 
 (Get-Content $RenameFile) -replace $OldName, $NewName | Set-Content $RenameFile
 (Get-Content $RenameFile) -replace "PACKAGE_NAME", $NewName | Set-Content $RenameFile
+
+# 7. Renaming $OldName to $NewName in README.md
+$ReadmeFile = "$RootDir\README.md"
+
+if (Test-Path $ReadmeFile) {
+    (Get-Content $ReadmeFile) -replace $OldName, $NewName | Set-Content $ReadmeFile
+    (Get-Content $ReadmeFile) -replace "PACKAGE_NAME", $NewName | Set-Content $ReadmeFile
+}
 
 Write-Host "Project successfully renamed to $NewName"
